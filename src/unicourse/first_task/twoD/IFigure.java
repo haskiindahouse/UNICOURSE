@@ -1,4 +1,4 @@
-package unicourse.first_task;
+package unicourse.first_task.twoD;
 import java.awt.Point;
 
 interface IFigure {

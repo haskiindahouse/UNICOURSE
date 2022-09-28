@@ -1,4 +1,4 @@
-package unicourse.first_task;
+package unicourse.first_task.twoD;
 
 import java.awt.*;
 
@@ -64,6 +64,9 @@ public class Triangle implements IFigure{
 
     public boolean isValid(){
         boolean ret = false;
+        if (lenAB == 0 | lenBC == 0 | lenCA == 0)
+            return false;
+
         if (lenAB + lenBC >= lenCA) {
             if (lenBC + lenCA >= lenAB)
                 if (lenAB + lenCA >= lenBC)
