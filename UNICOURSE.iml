@@ -54,5 +54,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="io.quarkus.jdbc.mysql" level="project" />
   </component>
 </module>
