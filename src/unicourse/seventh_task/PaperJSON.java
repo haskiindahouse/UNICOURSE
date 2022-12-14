@@ -1,6 +1,7 @@
 package unicourse.seventh_task;
 
-//import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONTokener;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +18,6 @@ public class PaperJSON extends JSONObject
         Category,
         KeyWords
     }
-
     private String _title;
     public String title()
     {
@@ -56,7 +56,7 @@ public class PaperJSON extends JSONObject
         return _category;
     }
 
-    PaperJSON(String author, String title, int count, String category, ArrayList<String> keywords)
+    public PaperJSON(String author, String title, int count, String category, ArrayList<String> keywords)
     {
         _author = author;
         _title = title;
@@ -64,6 +64,16 @@ public class PaperJSON extends JSONObject
         _category = category;
         _keywords = keywords;
     }
+
+    public String toViewString()
+    {
+        StringBuilder viewStr = new StringBuilder();
+        for (Properties prop : Properties.values())
+            viewStr.append("| ").append(prop.name()).append(" | ").append(propertyValueByKey(prop)).append(" |");
+
+        return viewStr.toString();
+    }
+
     @Override
     public String toString()
     {

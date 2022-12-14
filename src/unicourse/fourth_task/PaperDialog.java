@@ -1,9 +1,20 @@
 package unicourse.fourth_task;
+import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
+import unicourse.seventh_task.PaperJSON;
+
+import org.json.JSONTokener;
 import javax.swing.*;
 import java.awt.*;
+import org.json.JSONArray;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.Console;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PaperDialog extends JFrame
 {
@@ -38,7 +49,8 @@ public class PaperDialog extends JFrame
         _titleTextField = new JTextField("HTML + CSS + JS");
         _countTextField = new JTextField("500");
         _categoryComboBox = new JComboBox(categories);
-        _listOfPapers = new JList<String>();
+        _modeListOfPapers = new DefaultListModel<String>();
+        _listOfPapers = new JList<String>(_modeListOfPapers);
 
         comps.add(new JLabel("Author"));
         comps.add(_authorTextField);
@@ -51,14 +63,35 @@ public class PaperDialog extends JFrame
 
         comps.add(new JLabel("Category"));
         comps.add(_categoryComboBox);
-
+        comps.add(addPaperBtn);
+        comps.add(_listOfPapers);
         //comps.add(addPaperBtn);
         add(comps);
     }
 
+    private void loadFromFile()
+    {
+        JSONParser tokener = new JSONParser("test.json");
+        JSONObject root = new JSONObject(tokener);
+
+    }
+
+
     private void addPaperButtonPressed()
     {
-        System.out.println("hello");
+
+        var author = _authorTextField.getText();
+        var title = _titleTextField.getText();
+        var count = Integer.valueOf(_countTextField.getText());
+        var keywords = _categoryComboBox.getSelectedItem().toString();
+        var paper = new PaperJSON(author, title, count, keywords, new ArrayList<String>(Arrays.asList(keywords)));
+        try (FileWriter file = new FileWriter("test.json")) {
+            file.write(paper.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        _modeListOfPapers.addElement(paper.toViewString());
     }
 
     private JTextField _authorTextField;
@@ -66,5 +99,6 @@ public class PaperDialog extends JFrame
     private JTextField _countTextField;
     private JComboBox _categoryComboBox;
     private JList<String> _listOfPapers;
+    private DefaultListModel<String> _modeListOfPapers;
     static final String[] categories = {"WEB", "MOBILE", "BIG DATA", "EMBEDDED"};
 }
