@@ -16,9 +16,8 @@ public class Main {
         keywords.add("2");
         PaperJSON test = new PaperJSON(author, title, count, category, keywords);
 
-
         try (FileWriter file = new FileWriter("test.json")) {
-            file.write(test.toJSONString());
+            file.write(test.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }

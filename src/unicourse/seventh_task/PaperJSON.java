@@ -1,7 +1,7 @@
 package unicourse.seventh_task;
 
-import org.json.simple.JSONObject;
-
+//import org.json.simple.JSONObject;
+import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -65,13 +65,13 @@ public class PaperJSON extends JSONObject
         _keywords = keywords;
     }
     @Override
-    public String toJSONString()
+    public String toString()
     {
         Map<String, Object> serializeMap = new HashMap<String, Object>();
         for (Properties prop : Properties.values())
             serializeMap.put(prop.name(), propertyValueByKey(prop));
 
-        return toJSONString(serializeMap);
+        return serializeMap.toString();
     }
 
 }
