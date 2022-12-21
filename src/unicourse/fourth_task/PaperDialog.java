@@ -3,16 +3,12 @@ import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import unicourse.seventh_task.PaperJSON;
 
-import org.json.JSONTokener;
 import javax.swing.*;
 import java.awt.*;
-import org.json.JSONArray;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -71,8 +67,8 @@ public class PaperDialog extends JFrame
 
     private void loadFromFile()
     {
-        JSONParser tokener = new JSONParser("test.json");
-        JSONObject root = new JSONObject(tokener);
+        //JSONParser tokener = new JSONParser("test.json");
+        //JSONObject root = new JSONObject(tokener);
 
     }
 

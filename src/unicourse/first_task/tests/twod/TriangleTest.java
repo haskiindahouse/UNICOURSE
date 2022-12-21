@@ -3,6 +3,7 @@ package unicourse.first_task.tests.twod;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.testng.annotations.Test;
+import unicourse.first_task.TriangleCreateException;
 import unicourse.first_task.twoD.Triangle;
 
 import java.awt.*;
@@ -16,7 +17,7 @@ public class TriangleTest {
     }
 
     @Test
-    static void area() {
+    static void area() throws TriangleCreateException {
         Point a = new Point(0, 0);
         Point b = new Point(0, 4);
         Point c = new Point(4, 4);
@@ -25,11 +26,10 @@ public class TriangleTest {
         Assertions.assertEquals( Math.sqrt(p * (p - t.getLenAB()) * (p - t.getLenBC()) * (p - t.getLenCA())), t.area());
     }
     @Test
-    static void isExist()
-    {
+    static void isExist() throws TriangleCreateException {
         Point a = new Point(0, 0);
-        Point b = new Point(0, 0);
-        Point c = new Point(0, 0);
+        Point b = new Point(10, 0);
+        Point c = new Point(5, 5);
         Triangle t = new Triangle(a, b, c);
         Assertions.assertFalse(t.isValid());
     }

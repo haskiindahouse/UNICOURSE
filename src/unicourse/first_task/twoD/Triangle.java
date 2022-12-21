@@ -1,5 +1,7 @@
 package unicourse.first_task.twoD;
 
+import unicourse.first_task.TriangleCreateException;
+
 import java.awt.*;
 
 public class Triangle implements IFigure{
@@ -35,13 +37,16 @@ public class Triangle implements IFigure{
         return lenCA;
     }
 
-    public Triangle(Point a, Point b, Point c){
+    public Triangle(Point a, Point b, Point c) throws TriangleCreateException {
         this.a = a;
         this.b = b;
         this.c = c;
         this.lenAB = distance(a, b);
         this.lenBC = distance(b, c);
         this.lenCA = distance(c, a);
+        if (!isValid()) {
+            throw new TriangleCreateException("failed to create triangle");
+        }
     }
 
     public double perimeter() {

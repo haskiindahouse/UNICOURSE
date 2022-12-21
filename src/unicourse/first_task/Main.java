@@ -6,20 +6,18 @@ import unicourse.first_task.twoD.Rectangle;
 import java.awt.*;
 
 public class Main {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws TriangleCreateException {
         test2D();
     }
 
-    public static void test2D()
-    {
+    public static void test2D() throws TriangleCreateException {
         Point topLeftPos = new Point(0, 0);
         int width = 3;
         int height = 4;
         unicourse.first_task.twoD.Rectangle r = new Rectangle(topLeftPos, width, height);
         System.out.println(r.diagonal());
         Point a = new Point(0, 0);
-        Point b = new Point(0, 4);
+        Point b = new Point(0, 0);
         Point c = new Point(4, 4);
         Triangle t = new Triangle(a, b, c);
         System.out.println(t.area());
